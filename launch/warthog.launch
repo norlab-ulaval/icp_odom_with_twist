@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="icp_odom_with_twist" type="icp_odom_with_twist_node" name="icp_odom_with_twist_node" output="screen">
+	</node>
+</launch>
