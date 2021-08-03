@@ -33,6 +33,9 @@ nav_msgs::Odometry mergeOdomMsgs(const nav_msgs::Odometry& icpOdometry, const se
     nav_msgs::Odometry mergedOdometry;
     mergedOdometry = icpOdometry;
     mergedOdometry.twist.twist.angular = imuData.angular_velocity;
+    mergedOdometry.twist.twist.linear.x = 0.0;
+    mergedOdometry.twist.twist.linear.y = 0.0;
+    mergedOdometry.twist.twist.linear.z = 0.0;
     return mergedOdometry;
 }
 
@@ -44,7 +47,7 @@ int main(int argc, char **argv)
     mergedOdomPublisher = nodeHandle.advertise<nav_msgs::Odometry>("control_odom", 1000, true);
     ros::Subscriber icpOdomSubscriber = nodeHandle.subscribe("icp_odom", 1000, icpOdomCallback);
     ros::Subscriber imuOdomSubscriber = nodeHandle.subscribe("imu/data", 1000, imuOdomCallback);
-    ros::Rate loopRate(10);
+    ros::Rate loopRate(20);
     while(nodeHandle.ok())
     {
         ros::spinOnce();
