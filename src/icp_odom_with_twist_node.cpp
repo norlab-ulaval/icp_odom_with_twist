@@ -33,9 +33,9 @@ nav_msgs::Odometry mergeOdomMsgs(const nav_msgs::Odometry& icpOdometry, const se
     nav_msgs::Odometry mergedOdometry;
     mergedOdometry = icpOdometry;
     mergedOdometry.twist.twist.angular = imuData.angular_velocity;
-    mergedOdometry.twist.twist.linear.x = 0.0;
-    mergedOdometry.twist.twist.linear.y = 0.0;
-    mergedOdometry.twist.twist.linear.z = 0.0;
+//    mergedOdometry.twist.twist.linear.x = 0.0;
+//    mergedOdometry.twist.twist.linear.y = 0.0;
+//    mergedOdometry.twist.twist.linear.z = 0.0;
     return mergedOdometry;
 }
 
